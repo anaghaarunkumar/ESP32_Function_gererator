@@ -1,0 +1,20 @@
+# Python GUI Version 1.0.0
+
+## Version Details
+
+Version: 1.0.0
+Component: Python Function Generator GUI
+Status: Original interface
+
+## Features
+
+- Waveform selection
+- Frequency configuration
+- Amplitude and offset configuration
+- Serial communication with ESP32
+- Waveform preview
+- Function generator controls
+
+## Interface Screenshot
+
+![Python GUI V1](images/gui_v1.png)
