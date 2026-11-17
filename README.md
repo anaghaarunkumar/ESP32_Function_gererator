@@ -1,50 +1,80 @@
-# ESP32 Function Generator with Python GUI
 
-This repository keeps firmware and desktop software on separate long-lived branches.
+# ESP32 Function Generator
 
-| Branch | Contents | Release tags |
-| --- | --- | --- |
-| `main` | Project overview and team information | None |
-| `esp32-firmware` | ESP32 Arduino sketch and firmware documentation | `firmware-v1.0.0` |
-| `python-gui` | Python desktop application and GUI documentation | `gui-v1.0.0`, `gui-v2.0.0` |
+## Project Overview
 
-Select the relevant branch in GitHub's branch menu. The two application branches
-intentionally contain different files. Component work merges into its component
-branch; neither component branch is merged into main in this repository layout.
+The ESP32 Function Generator is controlled using a Python
+graphical interface communicating with an ESP32 microcontroller
+through USB serial communication.
 
-To keep both components available locally, clone once and add worktrees:
-
-```bash
-git clone https://github.com/OWNER/esp32-function-generator.git
-cd esp32-function-generator
-git worktree add ../function-generator-firmware esp32-firmware
-git worktree add ../function-generator-gui python-gui
-```
-
-Flash the sketch from the firmware worktree, then run `python main.py` in the
-GUI worktree after installing requirements. GUI V1 and V2 use identical firmware
-and serial protocol. The preview is calculated rather than measured output.
-
-This completed project is being imported into version control now. Import dates
-are not original development dates. See CONTRIBUTORS.md for verified team roles.
-
-Issue/PR label definitions are in `.github/labels.json`; create these labels on
-GitHub manually. Tags are repository-wide, so prefix component versions with
-`firmware-` and `gui-`. GUI V2 is a milestone name for a compatible visual update.
+The ESP32 generates analog waveforms using its internal DAC.
+The output can be monitored using an oscilloscope.
 
 ## System Architecture
 
 ![ESP32 Function Generator Architecture](docs/images/system_architecture.png)
 
-The system consists of a Python graphical interface
-communicating with an ESP32 microcontroller over USB serial.
-
-The ESP32 generates analog waveforms through its internal
-DAC. The output can be monitored using an oscilloscope.
-
 ### Main Components
+
 - Python GUI
 - USB serial communication
 - ESP32 microcontroller
 - Internal DAC
 - Oscilloscope
+
+## ESP32 Firmware
+
+Firmware development branch: `esp32-firmware`
+
+Firmware version: `firmware-v1.0.0`
+
+Open `esp32_function_generator/esp32_function_generator.ino`
+in Arduino IDE.
+
+The supplied sketch targets a classic ESP32 with an internal
+DAC (GPIO25 / DAC1).
+
+Its source supports Arduino-ESP32 core 2.x/3.x via conditional
+compilation. Verify the actual board/core combination before
+flashing.
+
+The firmware sketch is unchanged from the supplied completed-project
+archives.
+
+Internal firmware version: `1.0.0`
+
+Serial communication:
+- Baud rate: 115200
+- Protocol: newline-terminated ASCII
+
+Use the `python-gui` branch for the matching PC controller.
+
+## Version History
+
+- `firmware-v1.0.0`: Import and review the existing ESP32
+  function generator sketch.
+- No second distinct firmware version was present in the
+  supplied archives.
+
+## Verification
+
+Record the actual ESP32 board, Arduino core version,
+firmware upload result, and oscilloscope observations.
+
+Firmware compilation and hardware operation have not
+been verified during repository packaging.
+
+## Development and Collaboration
+
+Future firmware work can use branches such as
+`feat/firmware-description` or `fix/firmware-description`,
+with pull requests targeting `esp32-firmware`.
+
+Issue and Pull Request label definitions are available
+in `.github/labels.json`. Create these labels manually
+on GitHub if needed.
+
+Git tags are repository-wide. Component version tags
+should use prefixes such as `firmware-` and `gui-`.
+
+GUI V2 is a milestone name for a compatible visual update.
