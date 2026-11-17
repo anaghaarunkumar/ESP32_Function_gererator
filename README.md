@@ -31,3 +31,20 @@ are not original development dates. See CONTRIBUTORS.md for verified team roles.
 Issue/PR label definitions are in `.github/labels.json`; create these labels on
 GitHub manually. Tags are repository-wide, so prefix component versions with
 `firmware-` and `gui-`. GUI V2 is a milestone name for a compatible visual update.
+
+## System Architecture
+
+![ESP32 Function Generator Architecture](docs/images/system_architecture.png)
+
+The system consists of a Python graphical interface
+communicating with an ESP32 microcontroller over USB serial.
+
+The ESP32 generates analog waveforms through its internal
+DAC. The output can be monitored using an oscilloscope.
+
+### Main Components
+- Python GUI
+- USB serial communication
+- ESP32 microcontroller
+- Internal DAC
+- Oscilloscope
